@@ -1,7 +1,7 @@
 {
   "name": "Drink Water",
   "description": "An alarm to remind ppl to drink water",
-  "version": "1.0",
+  "version": "1.0.0",
   "manifest_version": 2,
   "permissions": ["alarms", "notifications", "storage"],
   "background": {

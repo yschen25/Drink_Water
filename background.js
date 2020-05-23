@@ -7,5 +7,6 @@ chrome.alarms.onAlarm.addListener(function() {
       iconUrl:  'img/drink_water.png',
       title:    'Time to Drink Water',
       message:  'Stand up and take a sip!',
-      priority: 0});
+      priority: 0
+  });
 });
