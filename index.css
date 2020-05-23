@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+}
+
+img {
+    width: 300px;
+    margin: 5px;
+}
+
+#btnWrapper{
+    width: 300px;
+    display: inline-flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+.btn  {
+    width: 100px;
+    height: 25px;
+    padding: 5px;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    background: #0da89c;
+    color: #fff;
+    font-size: 15px;
+}
+
+.stopBtn{
+    width: 300px;
+    background: #e01616;
+}
