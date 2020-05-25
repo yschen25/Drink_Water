@@ -1,12 +1,13 @@
 'use strict';
 
-const log = chrome.extension.getBackgroundPage().console.log;
+// const log = chrome.extension.getBackgroundPage().console.log;
 
 let sleepTime = -1;
-let displayIndef = false;
+let display = false;
 let timer;
 let timeId;
 let fileName = "music/default.mp3";
+let noteType = "both";
 
 let opt = {
     type: 'basic',
@@ -23,9 +24,25 @@ function run(minutes) {
 }
 
 function start() {
-    chrome.storage.sync.get(["time"], function (obj) {
+    chrome.storage.sync.get(["time","soundName","noteType","keepNote"],function(obj){
+        let name = obj.soundName;
+        let type = obj.noteType;
+        let keepNote = obj.keepNote;
+
+        if(name !== undefined){
+            fileName = name;
+        }
+
+        if(type !== undefined){
+            noteType = type;
+        }
+
+        if(keepNote !== undefined && keepNote){
+            display = true;
+        }
+
         let time = obj.time;
-        if (time !== undefined && time !== -1) {
+        if(time !== undefined && time !== -1){
             sleepTime = time * 60000;
             reminder();
         }
@@ -33,11 +50,15 @@ function start() {
 }
 
 function reminder() {
-    if (timer) clearTimeout(timer);
+    if (timer) {
+        clearTimeout(timer);
+    }
+
     let audio = new Audio(fileName);
     audio.play();
 
-    opt.requireInteraction = displayIndef;
+    opt.requireInteraction = display;
+
     if (timeId !== undefined) {
         chrome.notifications.clear(timeId);
     }
