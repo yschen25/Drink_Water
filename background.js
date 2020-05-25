@@ -1,6 +1,6 @@
 'use strict';
 
-const log = chrome.extension.getBackgroundPage().console.log;
+// const log = chrome.extension.getBackgroundPage().console.log;
 
 let sleepTime = -1;
 let display = false;
@@ -19,8 +19,6 @@ let opt = {
 function run(minutes) {
     sleepTime = minutes * 60000;
     saveTime(minutes);
-    log(minutes);
-    log(sleepTime);
     reminder();
 }
 

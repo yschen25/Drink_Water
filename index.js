@@ -1,6 +1,6 @@
 'use strict';
 
-const log = chrome.extension.getBackgroundPage().console.log;
+// const log = chrome.extension.getBackgroundPage().console.log;
 const background = chrome.extension.getBackgroundPage();
 
 function setAlarm(event) {
