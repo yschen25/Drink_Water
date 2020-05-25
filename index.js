@@ -1,6 +1,6 @@
 'use strict';
 
-// const log = chrome.extension.getBackgroundPage().console.log;
+const log = chrome.extension.getBackgroundPage().console.log;
 const background = chrome.extension.getBackgroundPage();
 
 function setAlarm(event) {
@@ -15,9 +15,9 @@ function clearAlarm() {
 }
 
 window.onload = function () {
-    let btns = document.getElementsByClassName('btn');
+    let btns = document.getElementsByClassName('setBtn');
     for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click', setAlarm);
     }
-    document.getElementById('cancel').addEventListener('click', clearAlarm);
+    document.getElementById('stopBtn').addEventListener('click', clearAlarm);
 };

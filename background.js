@@ -1,51 +1,38 @@
 'use strict';
 
-// const log = chrome.extension.getBackgroundPage().console.log;
+const log = chrome.extension.getBackgroundPage().console.log;
 
 let sleepTime = -1;
 let display = false;
 let timer;
 let timeId;
 let fileName = "music/default.mp3";
-let noteType = "both";
 
 let opt = {
     type: 'basic',
     iconUrl: 'img/drink_water.png',
     title: 'Time to Drink Water',
-    message: 'Stand up and take a sip!',
+    message: 'Stand up and drink water!',
     requireInteraction: false
 };
 
 function run(minutes) {
     sleepTime = minutes * 60000;
     saveTime(minutes);
+    log(minutes);
+    log(sleepTime);
     reminder();
 }
 
 function start() {
-    chrome.storage.sync.get(["time","soundName","noteType","keepNote"],function(obj){
-        let name = obj.soundName;
-        let type = obj.noteType;
-        let keepNote = obj.keepNote;
-
-        if(name !== undefined){
-            fileName = name;
-        }
-
-        if(type !== undefined){
-            noteType = type;
-        }
-
-        if(keepNote !== undefined && keepNote){
-            display = true;
-        }
+    chrome.storage.sync.get("time", function (obj) {
 
         let time = obj.time;
-        if(time !== undefined && time !== -1){
+        if (time !== undefined && time !== -1) {
             sleepTime = time * 60000;
             reminder();
         }
+
     });
 }
 
