@@ -5,12 +5,8 @@ const background = chrome.extension.getBackgroundPage();
 
 function setAlarm(event) {
     let minutes = parseFloat(event.target.getAttribute('data-time'));
-    // chrome.browserAction.setBadgeText({text: 'ON'});
-    // chrome.alarms.create({delayInMinutes: minutes});
-    // chrome.storage.sync.set({minutes: minutes});
-    log('minutes', minutes);
     window.close();
-    background.go(minutes);
+    background.run(minutes);
 }
 
 function clearAlarm() {
